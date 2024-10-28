@@ -266,7 +266,7 @@ namespace LETHIMCOOK3.Sprite
 
         }
 
-
+        bool isDamage;
         public void OnCollision(CollisionEventArgs collisionInfo)
         {
             if (collisionInfo.Other.ToString().Contains("PlatformEntity"))

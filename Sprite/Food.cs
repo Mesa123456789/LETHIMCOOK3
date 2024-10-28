@@ -179,6 +179,10 @@ namespace LETHIMCOOK3.Sprite
         }
         public void DrawBook(SpriteBatch _spriteBatch)
         {
+            //for (int i = 0; i < Game1.MenuList.Count; i++)
+            //{
+            //    Game1.MenuList[i].foodPosition = Game1.bookVec[i];
+            //}
             _spriteBatch.Draw(foodTexture,  new Rectangle((int)foodPosition.X, (int)foodPosition.Y,40,40) , Color.White);
         }
         public override void DrawBag(SpriteBatch _spriteBatch)

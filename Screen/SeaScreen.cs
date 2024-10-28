@@ -40,7 +40,7 @@ namespace LETHIMCOOK3.Screen
         RectangleF Bounds = new RectangleF(new Vector2(780, 64), new Vector2(40, 60));
         Texture2D _fish, popup, popup2, gotfish, fishing;
         Texture2D salmonmeat, redfishmeat, whalemeat, greenshimpmeat, pinkfishmeat, sharkmeat, shimpmeat, unimeat;
-        Texture2D dowfin, normalfish, octopus, salmon, shark, shimai, whale, sharkear, foodTexture,crabmeat, castusWorld, spider;
+        Texture2D dowfin, normalfish, octopus, salmon, shark, shimai, whale, sharkear, foodTexture, crabmeat, castusWorld, spider;
         //Collecting
         public static List<Enemy> enemyList = new();
         public static List<Fish> BigFishList = new();
@@ -89,10 +89,12 @@ namespace LETHIMCOOK3.Screen
             castusWorld = game.Content.Load<Texture2D>("Tree/castusWorld");
             castus = game.Content.Load<Texture2D>("ingre/Cactus");
             //Game1.foodList.Add(new Food("castusWorld", castusWorld, castusWorld, new Vector2(300, 800)));
+            //enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+        
 
-             //enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+        //enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
 
-            SmallFishList.Add(new Fish(15, "salmon", salmon, salmonmeat, fishPos)); //dragon
+        SmallFishList.Add(new Fish(15, "salmon", salmon, salmonmeat, fishPos)); //dragon
             SmallFishList.Add(new Fish(15, "shimai", shimai, shimai, fishPos));
             BigFishList.Add(new Fish(20, "sharkmeat", shark, sharkmeat, fishPos));
             BigFishList.Add(new Fish(20, "sharkear", shark, sharkear, fishPos));
@@ -259,7 +261,7 @@ namespace LETHIMCOOK3.Screen
             }
             for (int i = 32; i < Game1.foodList.Count; i++)
             {
-                Game1.foodList[i].Update(theTime,player,this);
+                Game1.foodList[i].Update(theTime, player, this);
             }
             for (int i = BigFishList.Count - 1; i >= 0; i--)
             {
@@ -305,13 +307,35 @@ namespace LETHIMCOOK3.Screen
             }
             if (RestauarntScreen.QuestList[19].Menuname == true && isSpawn[19] == false)
             {
-                int countEnemy = 1;
+                int countEnemy = 3;
                 for (int i = 0; i < countEnemy; i++)
                 {
-                    enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+                    enemyList.Add(new Enemy("jelly", jellyfish, new Food[1] { new Food("jeelyfishmeat", jeelyfishmeat, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
                 }
                 isSpawn[19] = true;
             }
+            if (RestauarntScreen.QuestList[23].Menuname == true && isSpawn[23] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    enemyList.Add(new Enemy("jelly", jellyfish, new Food[1] { new Food("jeelyfishmeat", jeelyfishmeat, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+                }
+                isSpawn[23] = true;
+            }
+        }
+
+        public void Oncraft(bool menu, int show)
+        {
+            menu = true;
+            spawn[show] = menu;
+            Console.WriteLine(" " + menu);
+
+
+
+
+
+            // Console.WriteLine(menu + " " + enemyINum);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)

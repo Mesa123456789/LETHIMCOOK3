@@ -54,15 +54,15 @@ namespace LETHIMCOOK3.Screen
         Food[] food = new Food[5];
         bool[] isSpawn = new bool[27];
         ///***new
-        Texture2D coriander, grass, greendimon, hippowing, jeelyfishmeat, lemon, meatball, icecream;
+        Texture2D coriander, grass, greendimon, hippowing, jeelyfishmeat, lemon, meatball, icecream, candysnail, candysnailC;
         Texture2D Mendrek, noodle, pinkdimon, seafood, shumai, smileeggs;
         Texture2D stone, suki, tempura, purpledimon, Board, BoardInteract,tempuraenemy;
         Texture2D castusWorld, Gem_Tree, Greengemt, Healing_Tree, IceCream, Nuddle_Tree
             , NuddleSong, Pinkgemt, PinkIce, PinkIce_Tree, Pongneung, pumkinWorld, Rice,
-            saladWorld,SeaUrchin,Tomato_Tree,tomatoWorld,Violetgemt, Pumpkin,rice, candysnail,salad, Squid, unimeat,tomato;
+            saladWorld,SeaUrchin,Tomato_Tree,tomatoWorld,Violetgemt, Pumpkin,rice,salad, Squid, unimeat,tomato;
         Texture2D castusWorldC, GreengemtC, Healing_TreeC, IceCreamC
     , NuddleSongC, PinkgemtC, PinkIceC, PongneungC, pumkinWorldC, RiceC,
-    saladWorldC, SeaUrchinC, tomatoWorldC, VioletgemtC, PumpkinC, spider, castus;
+    saladWorldC, SeaUrchinC, tomatoWorldC, VioletgemtC, PumpkinC, spider, castus, Door;
 
         
 
@@ -142,6 +142,11 @@ namespace LETHIMCOOK3.Screen
             tomato = game.Content.Load<Texture2D>("ingre/tomato");
             castusWorld = game.Content.Load<Texture2D>("tree/castusWorld");
             Healing_Tree = game.Content.Load<Texture2D>("food/Healing_Tree");
+            Door = game.Content.Load<Texture2D>("Door");
+
+            candysnail = game.Content.Load<Texture2D>("tree/candy snail-export");
+            candysnailC = game.Content.Load<Texture2D>("tree/Collect/candy snail");
+
             //***collect
             GreengemtC = game.Content.Load<Texture2D>("tree/Collect/Greengem_export");
             Healing_TreeC = game.Content.Load<Texture2D>("tree/Collect/Healing_Tree-export");
@@ -202,7 +207,7 @@ namespace LETHIMCOOK3.Screen
             Game1.foodList.Add(new Food("tomato", tomatoWorld, tomatoWorldC, tomato, new Vector2(414, 671), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("tomato", tomatoWorld, tomatoWorldC, tomato, new Vector2(456, 637), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("tomato", tomatoWorld, tomatoWorldC, tomato, new Vector2(414, 637), new RectangleF(145, 740, 32, 32), false));
-            //32 sea
+            //36 sea
             Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 200-10), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(60, 240), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(150, 240), new RectangleF(145, 740, 32, 32), false));
@@ -215,7 +220,13 @@ namespace LETHIMCOOK3.Screen
             Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1250, 500), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1200, 550), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1250, 350), new RectangleF(145, 740, 32, 32), false));
-            //43 candy
+
+            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 200 - 10+100), new RectangleF(145, 740, 32, 32), false));
+            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(460, 240+100), new RectangleF(145, 740, 32, 32), false));
+            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(340, 240+100), new RectangleF(145, 740, 32, 32), false));
+            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 270+100), new RectangleF(145, 740, 32, 32), false));
+            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 240 - 10+100), new RectangleF(145, 740, 32, 32), false));
+            //48 candy
             Game1.foodList.Add(new Food("pinksmaile", PinkIce, PinkIceC, pinksmilemeat, new Vector2(1160, 770), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("pinksmaile", PinkIce, PinkIceC, pinksmilemeat, new Vector2(1380, 720), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("pinksmaile", PinkIce, PinkIceC, pinksmilemeat, new Vector2(1210, 700), new RectangleF(145, 740, 32, 32), false));
@@ -227,7 +238,9 @@ namespace LETHIMCOOK3.Screen
             Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1351, 50), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1250, 68), new RectangleF(145, 740, 32, 32), false));
 
-           // Game1.foodList.
+            // Game1.foodList.
+
+            
 
             var viewportadapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, 800, 450);
             Game1._camera = new OrthographicCamera(viewportadapter);//******//
@@ -281,7 +294,9 @@ namespace LETHIMCOOK3.Screen
         public static int getQuest, getQuest2, getQuest3;
         MouseState ms, msPre;
         int count = 0;
-
+        bool paper = false;
+        bool inSide = false;
+        RectangleF exitway = new RectangleF(1320, 52, 128, 128);
         public override void Update(GameTime theTime)
         {
 
@@ -303,7 +318,12 @@ namespace LETHIMCOOK3.Screen
             }
             if (player.Bounds.Intersects(doorRec) && !EnterDoor)
             {
+                if (inSide == false)
+                {
+                    Game1.soundEffects[6].Play();
+                }
                 EnterDoor = true;
+
                 RestauarntScreen.IsCooking = true;
                 ScreenEvent.Invoke(game.RestauarntScreen, new EventArgs());
                 return;
@@ -339,8 +359,22 @@ namespace LETHIMCOOK3.Screen
                 openQuest = false;
                 questInteract = false;
             }
+            if(Game1.MenuList.Count >= 10)
+            {
+                openway = true;
+            }
+            
+            if (player.Bounds.Intersects(exitway) && openway == true)
+            {
+                game.Exit();
+            }
             if (openQuest == true)
             {
+                if(paper == false)
+                {
+                    Game1.soundEffects[11].Play();
+                    paper = true;
+                }
                 onQuest = randomQuest.Next(0, 2) == 0;
                 if (onQuest && !onRandom)
                 {
@@ -369,7 +403,7 @@ namespace LETHIMCOOK3.Screen
                     }
                     onRandom = true;
                 }
-            }
+            } else paper = false;
 
             for (int i = Game1.enemyList.Count - 1; i >= 0; i--)
             {
@@ -470,7 +504,7 @@ namespace LETHIMCOOK3.Screen
                 int countEnemy = 1;
                 for (int i = 0; i < countEnemy; i++)
                 {
-                    Game1.enemyList.Add(new Enemy("spider", spider, new Food[1] { new Food("meatball", meatball, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(400, 300, 160, 128)));
+                    Game1.enemyList.Add(new Enemy("spider", spider, new Food[1] { new Food("meatball", meatball, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(400, 300, 32,32)));
                 }
                 isSpawn[18] = true;
             }
@@ -484,10 +518,20 @@ namespace LETHIMCOOK3.Screen
                 }
                 isSpawn[22] = true;
             }
+            if (RestauarntScreen.QuestList[24].Menuname == true && isSpawn[24] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    Game1.enemyList.Add(new Enemy("slime", slime, new Food[1] { new Food("rainbowsmilemeat", rainbowsmilemeat, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(500, 400, 32, 32)));
+                }
+                isSpawn[24] = true;
+            }
 
 
         }
         Rectangle popupRec;
+        bool openway;
 
         public void Oncraft(bool menu,int show)
         {
@@ -536,7 +580,11 @@ namespace LETHIMCOOK3.Screen
             _spriteBatch.Draw(Nuddle_Tree, new Rectangle(254, 628, 42 * 2, 42 * 2), Color.White);
             _spriteBatch.Draw(Nuddle_Tree, new Rectangle(295, 594, 42 * 2, 42 * 2), Color.White);
             _spriteBatch.Draw(Nuddle_Tree, new Rectangle(295, 628, 42 * 2, 42 * 2), Color.White);
-
+            if(openway == true)
+            {
+                _spriteBatch.Draw(Door, new Rectangle(1320, 52, 128, 128), Color.White);
+            }
+            
             //_spriteBatch.Draw(PinkIce_Tree, new Rectangle(518, 742, 42 * 2, 42 * 2), Color.White);
 
 

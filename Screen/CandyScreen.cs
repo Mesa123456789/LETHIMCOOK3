@@ -16,6 +16,7 @@ using MonoGame.Extended.Collections;
 using System.Reflection.Metadata;
 
 
+
 namespace LETHIMCOOK3.Screen
 {
     public class CandyScreen : screen
@@ -64,7 +65,7 @@ namespace LETHIMCOOK3.Screen
             player.Load(game.Content, "Effect");
             //Load the background texture for the screen
             //enemyList.Add(new Enemy("pinksmaile", pinkslime, new Food[2] { new Food("pork", pork, new Rectangle(0, 0, 32, 32), true), new Food("smileeggs", smileeggs, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(1500,800, 64, 64)));
-            enemyList.Add(new Enemy("sheep", sheep, new Food[2] { new Food("sheepmeat", sheepmeat, new Rectangle(0, 0, 32, 32), true), new Food("wipcream", wipcream, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+            //enemyList.Add(new Enemy("sheep", sheep, new Food[2] { new Food("sheepmeat", sheepmeat, new Rectangle(0, 0, 32, 32), true), new Food("wipcream", wipcream, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
         
 
         _collisionComponent = new CollisionComponent(new RectangleF(0, 0, 1600, 900));
@@ -134,7 +135,7 @@ namespace LETHIMCOOK3.Screen
             {
                 player.Attack(enemyList[i]);
             }
-            for (int i = 44; i < Game1.foodList.Count; i++)
+            for (int i = 48; i < Game1.foodList.Count; i++)
             {
                 Game1.foodList[i].Update(theTime);
             }
@@ -192,8 +193,30 @@ namespace LETHIMCOOK3.Screen
                 }
                 isSpawn[7] = true;
             }
+            if (RestauarntScreen.QuestList[24].Menuname == true && isSpawn[24] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    enemyList.Add(new Enemy("pinksmaile", pinkslime, new Food[2] { new Food("pork", pork, new Rectangle(0, 0, 32, 32), true), new Food("smileeggs", smileeggs, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400 + (i * 32), 300 + (i * 32), 64, 64)));
+                }
+                isSpawn[24] = true;
+            }
 
 
+        }
+
+        public void Oncraft(bool menu, int show)
+        {
+            menu = true;
+            spawn[show] = menu;
+            Console.WriteLine(" " + menu);
+
+
+
+
+
+            // Console.WriteLine(menu + " " + enemyINum);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
@@ -205,7 +228,7 @@ namespace LETHIMCOOK3.Screen
             _spriteBatch.Begin(transformMatrix: transformMatrix, samplerState: SamplerState.PointClamp);//******//
             foreach (Food food in Game1.foodList)
             {
-                for (int i = 44; i < Game1.foodList.Count; i++)
+                for (int i = 49; i < Game1.foodList.Count; i++)
                 {
                     Game1.foodList[i].Draw(_spriteBatch);
                 }

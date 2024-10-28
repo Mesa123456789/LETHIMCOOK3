@@ -10,12 +10,17 @@ namespace LETHIMCOOK3.Screen
     {
         Texture2D menuTexture;
         Game1 game;
-        Texture2D startgame, menugame;
+        Texture2D startgame, menugame, Tutorial;
+
+        int currentMenu = 1;
+        bool keyActiveUp, keyActiveDown;
+
         public TitleScreen(Game1 game, EventHandler theScreenEvent) : base(theScreenEvent)
         {
             //Load the background texture for the screen
             startgame = game.Content.Load<Texture2D>("menugame (1)");
             menugame = game.Content.Load<Texture2D>("menugame (2)");
+            Tutorial = game.Content.Load<Texture2D>("Tutorial");
             this.game = game;
         }
         bool oncursor = false, showSetting = false;
@@ -25,6 +30,7 @@ namespace LETHIMCOOK3.Screen
         bool oncursor4 = false;
         bool noSound = false;
         bool noMusic = false;
+        bool tutorailUi;
         MouseState msPre, ms;
         public override void Update(GameTime theTime)
         {
@@ -40,7 +46,7 @@ namespace LETHIMCOOK3.Screen
             Rectangle sound = new Rectangle(341, 212, 30, 30);
             Rectangle music = new Rectangle(341, 259, 30, 30);
 
-           
+
 
             if (mouseRec.Intersects(startgame))
             {
@@ -48,7 +54,7 @@ namespace LETHIMCOOK3.Screen
                 if (ms.LeftButton == ButtonState.Pressed && !showSetting)
                 {
                     ScreenEvent.Invoke(game.GameplayScreen, new EventArgs());
-                    game._cameraPosition =new  Vector2(400, 225);
+                    game._cameraPosition = new Vector2(400, 225);
                     return;
                 }
             }
@@ -80,17 +86,52 @@ namespace LETHIMCOOK3.Screen
                     }
                 }
             }
-            if (mouseRec.Intersects(soundbutton))
+            if (ms.LeftButton == ButtonState.Pressed && msPre.LeftButton == ButtonState.Released)
             {
-                oncursor1 = true;
+                if (mouseRec.Intersects(ask))
+                {
+                    tutorailUi = !tutorailUi;
+                }
             }
-            else { oncursor1 = false; }
-            if (mouseRec.Intersects(ask))
-            {
-                oncursor2 = true;
+            if(tutorailUi) {
+            KeyboardState keyboard = Keyboard.GetState();
+
+                if (keyboard.IsKeyDown(Keys.Left))
+                {
+                    if (keyActiveUp == true)
+                    {
+                        if (currentMenu > 1)
+                        {
+                            currentMenu = currentMenu - 1;
+                            keyActiveUp = false;
+                        }
+                    }
+                }
+                if (keyboard.IsKeyDown(Keys.Right))
+                {
+                    if (keyActiveDown == true)
+                    {
+                        if (currentMenu < 3)
+                        {
+                            currentMenu = currentMenu + 1; keyActiveDown = false;
+                        }
+                    }
+                }
+               if (keyboard.IsKeyUp(Keys.Up))
+                {
+                    keyActiveUp = true;
+                }
+                if (keyboard.IsKeyUp(Keys.Right))
+                {
+                    keyActiveDown = true;
+                }
+
             }
-            else { oncursor2 = false; }
-            if (mouseRec.Intersects(setting))
+
+
+
+
+                if (mouseRec.Intersects(setting))
             {
                 oncursor3 = true;
 
@@ -116,6 +157,7 @@ namespace LETHIMCOOK3.Screen
             msPre = ms;
             base.Update(theTime);
         }
+        bool p1,p2,p3;
         public override void Draw(SpriteBatch theBatch)
         {
             theBatch.Draw(startgame, Vector2.Zero, Color.White);
@@ -144,6 +186,7 @@ namespace LETHIMCOOK3.Screen
             {
                 theBatch.Draw(menugame, new Vector2(274 + 66 + 66 + 66, 373), new Rectangle(119 + 66 + 66, 367, 50, 48), Color.White);
             }
+
             if (showSetting)
             {
                 theBatch.Draw(menugame, new Vector2(286, 120), new Rectangle(387, 79, 232, 200), Color.White);
@@ -156,7 +199,33 @@ namespace LETHIMCOOK3.Screen
                     theBatch.Draw(menugame, new Vector2(338, 258), new Rectangle(413, 311, 17, 17), Color.White);
                 }
             }
-
+            if (tutorailUi)
+            {
+                if (currentMenu == 1)
+                {
+                    theBatch.Draw(Tutorial, new Vector2(0 + 82, 0 - 50), new Rectangle(50, 0, 632, 450), Color.White);
+                }
+                else
+                {
+                    theBatch.Draw(Tutorial, new Vector2(1000, 1000), new Rectangle(0, 0, 185, 40), Color.White);
+                }
+                if (currentMenu == 2)
+                {
+                    theBatch.Draw(Tutorial, new Vector2(0 + 73, 0 - 50), new Rectangle(50 + 632, 0, 632, 450), Color.White);
+                }
+                else
+                {
+                    theBatch.Draw(Tutorial, new Vector2(1000, 1000), new Rectangle(0, 40, 185, 40), Color.White);
+                }
+                if (currentMenu == 3)
+                {
+                    theBatch.Draw(Tutorial, new Vector2(0 + 65, 0 - 50), new Rectangle(50 + 632 + 632, 0, 632, 450), Color.White);
+                }
+                else
+                {
+                    theBatch.Draw(Tutorial, new Vector2(1000, 1000), new Rectangle(0, 0, 185, 40), Color.White);
+                }
+            }
             base.Draw(theBatch);
         }
     }
