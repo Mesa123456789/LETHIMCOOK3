@@ -19,6 +19,7 @@ using LETHIMCOOK3.Screen;
 using LETHIMCOOK3.Sprite;
 using LETHIMCOOK3;
 using System.Data.SqlTypes;
+using System.Linq;
 
 
 namespace LETHIMCOOK3.Screen
@@ -57,10 +58,10 @@ namespace LETHIMCOOK3.Screen
         Texture2D coriander, grass, greendimon, hippowing, jeelyfishmeat, lemon, meatball, icecream, candysnail, candysnailC;
         Texture2D Mendrek, noodle, pinkdimon, seafood, shumai, smileeggs;
         Texture2D stone, suki, tempura, purpledimon, Board, BoardInteract,tempuraenemy;
-        Texture2D castusWorld, Gem_Tree, Greengemt, Healing_Tree, IceCream, Nuddle_Tree
+        public static Texture2D castusWorld, Gem_Tree, Greengemt, Healing_Tree, IceCream, Nuddle_Tree
             , NuddleSong, Pinkgemt, PinkIce, PinkIce_Tree, Pongneung, pumkinWorld, Rice,
             saladWorld,SeaUrchin,Tomato_Tree,tomatoWorld,Violetgemt, Pumpkin,rice,salad, Squid, unimeat,tomato;
-        Texture2D castusWorldC, GreengemtC, Healing_TreeC, IceCreamC
+        public static  Texture2D castusWorldC, GreengemtC, Healing_TreeC, IceCreamC
     , NuddleSongC, PinkgemtC, PinkIceC, PongneungC, pumkinWorldC, RiceC,
     saladWorldC, SeaUrchinC, tomatoWorldC, VioletgemtC, PumpkinC, spider, castus, Door;
 
@@ -86,8 +87,9 @@ namespace LETHIMCOOK3.Screen
             chickenmeat = game.Content.Load<Texture2D>("ingre/chickenmeat");
             cheese = game.Content.Load<Texture2D>("ingre/cheese");
             rainbowsmilemeat = game.Content.Load<Texture2D>("ingre/rainbowsmilemeat");
-            icecream = game.Content.Load<Texture2D>("ingre/icecream");
-
+            
+            foodTexture = game.Content.Load<Texture2D>("crab");
+            crabmeat= game.Content.Load<Texture2D>("ingre/crabmeat");
             tempuraenemy = game.Content.Load<Texture2D>("tempura");
             spider = game.Content.Load<Texture2D>("spiderx1");
             ///****
@@ -106,7 +108,7 @@ namespace LETHIMCOOK3.Screen
             Gem_Tree = game.Content.Load<Texture2D>("tree/Gem_Tree");
             Greengemt = game.Content.Load<Texture2D>("tree/Greengemt");
             Healing_Tree = game.Content.Load<Texture2D>("tree/Healing_Tree");
-            IceCream = game.Content.Load<Texture2D>("tree/IceCream");
+           
             Nuddle_Tree = game.Content.Load<Texture2D>("tree/Nuddle_Tree");
             NuddleSong = game.Content.Load<Texture2D>("tree/NuddleSong");
             Pinkgemt = game.Content.Load<Texture2D>("tree/Pinkgemt");
@@ -126,7 +128,7 @@ namespace LETHIMCOOK3.Screen
             newstlye = game.Content.Load<Texture2D>("newstlye");
             grass = game.Content.Load<Texture2D>("ingre/grass");
             greendimon = game.Content.Load<Texture2D>("ingre/greendimon");
-            pinksmilemeat = game.Content.Load<Texture2D>("ingre/pinksmilemeat");
+            
             meatball = game.Content.Load<Texture2D>("ingre/meatball");
             Mendrek = game.Content.Load<Texture2D>("ingre/Mendrek");
             noodle = game.Content.Load<Texture2D>("ingre/noodle");
@@ -144,13 +146,11 @@ namespace LETHIMCOOK3.Screen
             Healing_Tree = game.Content.Load<Texture2D>("food/Healing_Tree");
             Door = game.Content.Load<Texture2D>("Door");
 
-            candysnail = game.Content.Load<Texture2D>("tree/candy snail-export");
-            candysnailC = game.Content.Load<Texture2D>("tree/Collect/candy snail");
+           
 
             //***collect
             GreengemtC = game.Content.Load<Texture2D>("tree/Collect/Greengem_export");
             Healing_TreeC = game.Content.Load<Texture2D>("tree/Collect/Healing_Tree-export");
-            IceCreamC = game.Content.Load<Texture2D>("tree/Collect/IceCream-export");
             NuddleSongC = game.Content.Load<Texture2D>("tree/Collect/NuddleSong-export");
             PinkgemtC = game.Content.Load<Texture2D>("tree/Collect/Pinkgem_export");
             PinkIceC = game.Content.Load<Texture2D>("tree/Collect/PinkIce-export");
@@ -207,38 +207,7 @@ namespace LETHIMCOOK3.Screen
             Game1.foodList.Add(new Food("tomato", tomatoWorld, tomatoWorldC, tomato, new Vector2(414, 671), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("tomato", tomatoWorld, tomatoWorldC, tomato, new Vector2(456, 637), new RectangleF(145, 740, 32, 32), false));
             Game1.foodList.Add(new Food("tomato", tomatoWorld, tomatoWorldC, tomato, new Vector2(414, 637), new RectangleF(145, 740, 32, 32), false));
-            //36 sea
-            Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 200-10), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(60, 240), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(150, 240), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 270), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 240-10), new RectangleF(145, 740, 32, 32), false));
 
-            Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1200, 400), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1280, 420), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1250, 450), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1250, 500), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1200, 550), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("unimeat", SeaUrchin, SeaUrchinC, unimeat, new Vector2(1250, 350), new RectangleF(145, 740, 32, 32), false));
-
-            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 200 - 10+100), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(460, 240+100), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(340, 240+100), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 270+100), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 240 - 10+100), new RectangleF(145, 740, 32, 32), false));
-            //48 candy
-            Game1.foodList.Add(new Food("pinksmaile", PinkIce, PinkIceC, pinksmilemeat, new Vector2(1160, 770), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("pinksmaile", PinkIce, PinkIceC, pinksmilemeat, new Vector2(1380, 720), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("pinksmaile", PinkIce, PinkIceC, pinksmilemeat, new Vector2(1210, 700), new RectangleF(145, 740, 32, 32), false));
-
-            Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1394,130), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1290, 174), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1285, 105), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1393, 68), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1351, 50), new RectangleF(145, 740, 32, 32), false));
-            Game1.foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1250, 68), new RectangleF(145, 740, 32, 32), false));
-
-            // Game1.foodList.
 
             
 
@@ -292,11 +261,20 @@ namespace LETHIMCOOK3.Screen
         bool onQuest = false;
         static Random randomQuest = new Random();
         public static int getQuest, getQuest2, getQuest3;
+        OpenQuest questRad;
         MouseState ms, msPre;
         int count = 0;
         bool paper = false;
         bool inSide = false;
         RectangleF exitway = new RectangleF(1320, 52, 128, 128);
+        public OpenQuest currentQuest;
+        public void Oncraft(bool menu, int show)
+        {
+            menu = true;
+            spawn[show] = menu;
+            randomed = show;
+            Console.WriteLine(" " + menu);
+        }
         public override void Update(GameTime theTime)
         {
 
@@ -306,12 +284,6 @@ namespace LETHIMCOOK3.Screen
             mouseCheck = new Rectangle((int)posMouse.X, (int)posMouse.Y, 24, 24);
 
             popupPos = new Vector2(700, 400);
-            popupRec = new Rectangle(700, 400, 100, 50);
-            //if (mouseCheck.Intersects(popupRec) && ms.LeftButton == ButtonState.Pressed)
-            //{
-            //    popupRec.X += 10;
-            //}
-
             if (!player.Bounds.Intersects(doorRec) && !player.Bounds.Intersects(CandyMapRec) && !player.Bounds.Intersects(SeaMapRec))
             {
                 GameplayScreen.EnterDoor = false;
@@ -339,7 +311,6 @@ namespace LETHIMCOOK3.Screen
             {
                 EnterDoor = true;
                 ScreenEvent.Invoke(game.SeaScreen, new EventArgs());
-                // player.Bounds.Position = new Vector2(780, 64);
                 game._cameraPosition = new Vector2(440, 0);
                 return;
             }
@@ -359,15 +330,18 @@ namespace LETHIMCOOK3.Screen
                 openQuest = false;
                 questInteract = false;
             }
-            if(Game1.MenuList.Count >= 10)
+            if(Game1.MenuList.Count >= 20)
             {
                 openway = true;
             }
             
             if (player.Bounds.Intersects(exitway) && openway == true)
             {
-                game.Exit();
+
+                ScreenEvent.Invoke(game.TitleScreen, new EventArgs());
+                return;
             }
+
             if (openQuest == true)
             {
                 if(paper == false)
@@ -376,30 +350,38 @@ namespace LETHIMCOOK3.Screen
                     paper = true;
                 }
                 onQuest = randomQuest.Next(0, 2) == 0;
-                if (onQuest && !onRandom)
+                if (onQuest && !onRandom )
                 {
                     for (int i = 0; i < 1; i++)
                     {
-                        getQuest = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
-                        getQuest2 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
-                        getQuest3 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
-                        if (getQuest == getQuest2 || getQuest == getQuest3)
-                        {
+                        for (int j = 0; j < Game1.randomQ.Count; j++)
+                        { 
                             getQuest = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
-                        }
-                        if (getQuest2 == getQuest3 || getQuest2 == getQuest)
-                        {
                             getQuest2 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
-                        }
-                        if (getQuest3 == getQuest2 || getQuest == getQuest3)
-                        {
                             getQuest3 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
+                            //Game1.randomQ.Add(0);
+
+                            if (getQuest == getQuest2 || getQuest == getQuest3 )
+                            {
+                                getQuest = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
+                            }
+                            if (getQuest2 == getQuest3 || getQuest2 == getQuest )
+                            {
+                                getQuest2 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
+                            }
+                            if (getQuest3 == getQuest2 || getQuest == getQuest3)
+                            {
+                                getQuest3 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
+                            }
+                            //Console.WriteLine(RestauarntScreen.QuestList);
+                            Console.WriteLine(getQuest);
+                            Console.WriteLine(getQuest2);
+                            Console.WriteLine(getQuest3);
+                            //Console.WriteLine(randomed);
                         }
-                        //RestauarntScreen.QuestList[getQuest]. = true;
-                        Console.WriteLine(RestauarntScreen.QuestList);
-                        Console.WriteLine(getQuest);
-                        Console.WriteLine(getQuest2);
-                        Console.WriteLine(getQuest3);
+                            
+                        //RestauarntScreen.QuestList = Game1.GetRandomElements<RestauarntScreen.QuestList>(RestauarntScreen.QuestList, 3);
+                        
                     }
                     onRandom = true;
                 }
@@ -418,7 +400,7 @@ namespace LETHIMCOOK3.Screen
                 Game1.BagList[i].Update(theTime);
             }
 
-            for (int i = 0; i <  Game1.foodList.Count && i < 33 ; i++)
+            for (int i = 0; i <  Game1.foodList.Count ; i++)
             {
                 Game1.foodList[i].Update(theTime,player,this);
             }
@@ -433,7 +415,7 @@ namespace LETHIMCOOK3.Screen
             }
             _collisionComponent.Update(theTime);
             _tiledMapRenderer.Update(theTime);
-
+            game.UpDateUI(theTime);
             Game1._camera.LookAt(game._bgPosition + game._cameraPosition);//******//
             player.Update(theTime);
             msPre = ms;
@@ -444,7 +426,7 @@ namespace LETHIMCOOK3.Screen
             {
                 RestauarntScreen.QuestList[i].Menuname = spawn[i];
             }
-            if (RestauarntScreen.QuestList[3].Menuname == true && isSpawn[3] == false)
+            if ( RestauarntScreen.QuestList[3].Menuname == true && isSpawn[3] == false)
             {
                 int countEnemy = 1;
                 for (int i = 0; i < countEnemy; i++)
@@ -490,18 +472,10 @@ namespace LETHIMCOOK3.Screen
                 }
                 isSpawn[8] = true;
             }
-            if (RestauarntScreen.QuestList[17].Menuname == true && isSpawn[17] == false)
-            {
-                int countEnemy = 1;
-                for (int i = 0; i < countEnemy; i++)
-                {
-                    Game1.enemyList.Add(new Enemy("cow", icebear, new Food[3] { new Food(true,"cowmeat", cowmeat, new Rectangle(0, 0, 32, 32)), new Food(true, "stone", stone, new Rectangle(0, 0, 32, 32)), new Food(true, "milk", milk, new Rectangle(0, 0, 32, 32)) }, 5, new RectangleF(400, 300, 64, 64)));
-                }
-                isSpawn[17] = true;
-            }
+             
             if (RestauarntScreen.QuestList[18].Menuname == true && isSpawn[18] == false)
             {
-                int countEnemy = 1;
+                int countEnemy = 3;
                 for (int i = 0; i < countEnemy; i++)
                 {
                     Game1.enemyList.Add(new Enemy("spider", spider, new Food[1] { new Food("meatball", meatball, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(400, 300, 32,32)));
@@ -520,31 +494,49 @@ namespace LETHIMCOOK3.Screen
             }
             if (RestauarntScreen.QuestList[24].Menuname == true && isSpawn[24] == false)
             {
-                int countEnemy = 1;
+                int countEnemy = 3;
                 for (int i = 0; i < countEnemy; i++)
                 {
                     Game1.enemyList.Add(new Enemy("slime", slime, new Food[1] { new Food("rainbowsmilemeat", rainbowsmilemeat, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(500, 400, 32, 32)));
+                    Game1.enemyList.Add(new Enemy("cow", icebear, new Food[3] { new Food(true, "cowmeat", cowmeat, new Rectangle(0, 0, 32, 32)), new Food(true, "stone", stone, new Rectangle(0, 0, 32, 32)), new Food(true, "milk", milk, new Rectangle(0, 0, 32, 32)) }, 5, new RectangleF(400, 300, 64, 64)));
                 }
                 isSpawn[24] = true;
+            }
+            if (RestauarntScreen.QuestList[24].Menuname == true && isSpawn[24] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    Game1.enemyList.Add(new Enemy("cow", icebear, new Food[3] { new Food(true, "cowmeat", cowmeat, new Rectangle(0, 0, 32, 32)), new Food(true, "stone", stone, new Rectangle(0, 0, 32, 32)), new Food(true, "milk", milk, new Rectangle(0, 0, 32, 32)) }, 5, new RectangleF(400, 300, 64, 64)));
+                }
+                isSpawn[24] = true;
+            }
+            if (RestauarntScreen.QuestList[23].Menuname == true && isSpawn[23] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    Game1.enemyList.Add(new Enemy("cow", icebear, new Food[3] { new Food(true, "cowmeat", cowmeat, new Rectangle(0, 0, 32, 32)), new Food(true, "stone", stone, new Rectangle(0, 0, 32, 32)), new Food(true, "milk", milk, new Rectangle(0, 0, 32, 32)) }, 5, new RectangleF(400, 300, 64, 64)));
+                }
+                isSpawn[23] = true;
+            }
+            if (RestauarntScreen.QuestList[17].Menuname == true && isSpawn[17] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    Game1.enemyList.Add(new Enemy("cow", icebear, new Food[3] { new Food(true, "cowmeat", cowmeat, new Rectangle(0, 0, 32, 32)), new Food(true, "stone", stone, new Rectangle(0, 0, 32, 32)), new Food(true, "milk", milk, new Rectangle(0, 0, 32, 32)) }, 5, new RectangleF(400, 300, 64, 64)));
+                }
+                isSpawn[17] = true;
             }
 
 
         }
         Rectangle popupRec;
         bool openway;
+        int randomed;
+  
 
-        public void Oncraft(bool menu,int show)
-        {
-            menu = true;
-            spawn[show] = menu;
-            Console.WriteLine(" " + menu);
-           
-            
-            
-            
-           
-           // Console.WriteLine(menu + " " + enemyINum);
-        }
         public override void Draw(SpriteBatch _spriteBatch)
         {
 
@@ -597,7 +589,7 @@ namespace LETHIMCOOK3.Screen
             //_spriteBatch.Draw(popup,popupRec, Color.White);
             foreach (Food food in Game1.foodList)
             {
-                for (int i = 0; i < Game1.foodList.Count && i < 33; i++)
+                for (int i = 0; i < Game1.foodList.Count; i++)
                 {
                     Game1.foodList[i].Draw(_spriteBatch);
                 }
@@ -616,7 +608,8 @@ namespace LETHIMCOOK3.Screen
 
 
         }
-
+        
 
     }
+    
 }

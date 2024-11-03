@@ -110,7 +110,7 @@ namespace LETHIMCOOK3
         {
             if (Bounds.Intersects(player.Bounds) && !isHit)
             {
-                Game1.currentHeart -= 1;
+                Game1.currentHeart -= 5;
                 isHit = true;
                 if (soundDamage = false)
                 {

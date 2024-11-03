@@ -191,12 +191,21 @@ namespace LETHIMCOOK3.Sprite
         }
         public virtual void OnCollision()
         {
-            //OntableAble = true;
             Game1.BagList.Add(this);
             Game1.IsPopUp = true;
             foreach (Food food in Game1.foodList)
             {
                 Game1.foodList.Remove(this);
+                break;
+            }
+            foreach (Food food in SeaScreen.foodList)
+            {
+                SeaScreen.foodList.Remove(this);
+                break;
+            }
+            foreach (Food food in CandyScreen.foodList)
+            {
+                CandyScreen.foodList.Remove(this);
                 break;
             }
         }

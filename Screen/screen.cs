@@ -16,7 +16,7 @@ namespace LETHIMCOOK3.Screen
         public Vector2 _cameraPosition;
         public Vector2 _bgPosition;
         Food food;
-        public List<Food> foodList = new();
+        
         protected EventHandler ScreenEvent; public screen(EventHandler theScreenEvent)
         {
             ScreenEvent = theScreenEvent;

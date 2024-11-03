@@ -45,13 +45,14 @@ namespace LETHIMCOOK3.Screen
         public static List<Enemy> enemyList = new();
         public static List<Fish> BigFishList = new();
         public static List<Fish> SmallFishList = new();
+        public static List<Food> foodList = new();
         private Random _random;
         public static bool _isFishing;
         public static double _fishCatchTime;
         public static double _elapsedTime;
         bool Isinteract = false;
 
-        Texture2D jellyfish, hippomeat, jeelyfishmeat, hippowing, hippo, castusWorldC, castus;
+        Texture2D jellyfish, hippomeat, jeelyfishmeat, hippowing, hippo, castusWorldC, castus, candysnail, candysnailC;
 
         //Tile_FrontRestaurant Tile_Wall_Frontres
         public SeaScreen(Game1 game, EventHandler theScreenEvent) : base(theScreenEvent)
@@ -81,6 +82,8 @@ namespace LETHIMCOOK3.Screen
             whale = game.Content.Load<Texture2D>("_fish/whale");
             hippo = game.Content.Load<Texture2D>("hippo");
             jellyfish = game.Content.Load<Texture2D>("jellyfish");
+            foodTexture = game.Content.Load<Texture2D>("crab");
+            crabmeat = game.Content.Load<Texture2D>("ingre/crabmeat");
             hippomeat = game.Content.Load<Texture2D>("ingre/hippomeat");
             jeelyfishmeat = game.Content.Load<Texture2D>("ingre/jeelyfishmeat");
             hippowing = game.Content.Load<Texture2D>("ingre/hippowing");
@@ -88,13 +91,35 @@ namespace LETHIMCOOK3.Screen
             castusWorldC = game.Content.Load<Texture2D>("Tree/Collect/castusWorld-export");
             castusWorld = game.Content.Load<Texture2D>("Tree/castusWorld");
             castus = game.Content.Load<Texture2D>("ingre/Cactus");
+            candysnail = game.Content.Load<Texture2D>("tree/candy snail-export");
+            candysnailC = game.Content.Load<Texture2D>("tree/Collect/candy snail");
+
+
+            foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 200 - 10), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(60, 240), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(150, 240), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 270), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("Cactus", castusWorld, castusWorldC, castus, new Vector2(100, 240 - 10), new RectangleF(145, 740, 32, 32), false));
+
+            foodList.Add(new Food("unimeat", GameplayScreen.SeaUrchin, GameplayScreen.SeaUrchinC, GameplayScreen.unimeat, new Vector2(1200, 400), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("unimeat", GameplayScreen.SeaUrchin, GameplayScreen.SeaUrchinC, GameplayScreen.unimeat, new Vector2(1280, 420), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("unimeat", GameplayScreen.SeaUrchin, GameplayScreen.SeaUrchinC, GameplayScreen.unimeat, new Vector2(1250, 450), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("unimeat", GameplayScreen.SeaUrchin, GameplayScreen.SeaUrchinC, GameplayScreen.unimeat, new Vector2(1250, 500), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("unimeat", GameplayScreen.SeaUrchin, GameplayScreen.SeaUrchinC, GameplayScreen.unimeat, new Vector2(1200, 550), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("unimeat", GameplayScreen.SeaUrchin, GameplayScreen.SeaUrchinC, GameplayScreen.unimeat, new Vector2(1250, 350), new RectangleF(145, 740, 32, 32), false));
+
+            foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 200 - 10 + 100), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(460, 240 + 100), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(340, 240 + 100), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 270 + 100), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("candysnail", candysnail, candysnailC, candysnail, new Vector2(400, 240 - 10 + 100), new RectangleF(145, 740, 32, 32), false));
             //Game1.foodList.Add(new Food("castusWorld", castusWorld, castusWorld, new Vector2(300, 800)));
             //enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
-        
 
-        //enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
 
-        SmallFishList.Add(new Fish(15, "salmon", salmon, salmonmeat, fishPos)); //dragon
+            //enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+
+            SmallFishList.Add(new Fish(15, "salmon", salmon, salmonmeat, fishPos)); //dragon
             SmallFishList.Add(new Fish(15, "shimai", shimai, shimai, fishPos));
             BigFishList.Add(new Fish(20, "sharkmeat", shark, sharkmeat, fishPos));
             BigFishList.Add(new Fish(20, "sharkear", shark, sharkear, fishPos));
@@ -203,7 +228,7 @@ namespace LETHIMCOOK3.Screen
             if (player.Bounds.Intersects(popupRec) && mouseCheck.Intersects(SeaRec) && ms.LeftButton == ButtonState.Pressed && !_isFishing)
             {
                 _isFishing = true;
-                _fishCatchTime = _random.Next(2, 5); // Random time between 2 to 5 seconds
+                _fishCatchTime = _random.Next(2, 10); // Random time between 2 to 5 seconds
                 _elapsedTime = 0;
             }
             else if (ms.LeftButton == ButtonState.Released)
@@ -259,9 +284,9 @@ namespace LETHIMCOOK3.Screen
             {
                 Game1.BagList[i].Update(theTime);
             }
-            for (int i = 32; i < Game1.foodList.Count; i++)
+            for (int i = 0; i < foodList.Count; i++)
             {
-                Game1.foodList[i].Update(theTime, player, this);
+                foodList[i].Update(theTime, player, this);
             }
             for (int i = BigFishList.Count - 1; i >= 0; i--)
             {
@@ -287,18 +312,19 @@ namespace LETHIMCOOK3.Screen
             {
                 RestauarntScreen.QuestList[i].Menuname = spawn[i];
             }
-            if (RestauarntScreen.QuestList[6].Menuname == true && isSpawn[6] == false)
+            if (RestauarntScreen.QuestList[5].Menuname == true && isSpawn[5] == false)
             {
                 int countEnemy = 1;
                 for (int i = 0; i < countEnemy; i++)
                 {
-                    enemyList.Add(new Enemy("crab", foodTexture, new Food[1] { new Food("crabmeat", crabmeat, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(300, 300, 64, 64)));
+                    enemyList.Add(new Enemy("crab", foodTexture, new Food[1] { new Food("Thaicrab", crabmeat, new Rectangle(0, 0, 32, 32), false) }, 5, new RectangleF(300, 300, 64, 64)));
                 }
-                isSpawn[6] = true;
+                isSpawn[5] = true;
             }
+
             if (RestauarntScreen.QuestList[26].Menuname == true && isSpawn[26] == false)
             {
-                int countEnemy = 1;
+                int countEnemy = 2;
                 for (int i = 0; i < countEnemy; i++)
                 {
                     enemyList.Add(new Enemy("hippo", hippo, new Food[2] { new Food("hippomeat", hippomeat, new Rectangle(0, 0, 32, 32), true), new Food("hippowing", hippowing, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
@@ -331,11 +357,6 @@ namespace LETHIMCOOK3.Screen
             spawn[show] = menu;
             Console.WriteLine(" " + menu);
 
-
-
-
-
-            // Console.WriteLine(menu + " " + enemyINum);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
@@ -350,11 +371,11 @@ namespace LETHIMCOOK3.Screen
             {
                 _spriteBatch.Draw(popup, new Rectangle(840, 700, 140, 50), Color.White);
             }
-            foreach (Food food in Game1.foodList)
+            foreach (Food food in foodList)
             {
-                for (int i = 33; i < Game1.foodList.Count; i++)
+                for (int i =0; i < foodList.Count ; i++)
                 {
-                    Game1.foodList[i].Draw(_spriteBatch);
+                    foodList[i].Draw(_spriteBatch);
                 }
             }
             foreach (Enemy enemy in enemyList)
@@ -390,8 +411,8 @@ namespace LETHIMCOOK3.Screen
                 {
                     for (int i = 0; i < Game1.BagList.Count; i++)
                     {
-                        _spriteBatch.Draw(popup2, new Rectangle((int)player.Bounds.Position.X - 10, (int)player.Bounds.Position.Y - 42, 40, 40), Color.White);
-                        _spriteBatch.Draw(Game1.BagList[i].foodTexture, new Rectangle((int)player.Bounds.Position.X - 5, (int)player.Bounds.Position.Y - 40, 32, 32), Color.White);
+                       // _spriteBatch.Draw(popup2, new Rectangle((int)player.Bounds.Position.X - 10, (int)player.Bounds.Position.Y - 42, 40, 40), Color.White);
+                       //_spriteBatch.Draw(Game1.BagList[i].foodTexture, new Rectangle((int)player.Bounds.Position.X - 5, (int)player.Bounds.Position.Y - 40, 32, 32), Color.White);
                     }
                 }
                 CountTime(250);

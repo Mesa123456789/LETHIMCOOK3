@@ -25,8 +25,10 @@ namespace LETHIMCOOK3.Screen
     {
         ///***new <summary>
         Texture2D BBQfood, oct, DragonFish, GreenShrimp, Dumpling, GrilledChicken, Icecream_food, Mukrata, meatball_food, Pizza, Sasimi, Stone, Tempura, ThaiCrab, Bingsu, PumkimCheses, CrunchPork, Salad, Jellyfish_Salad, GlamStew, SweetSteak, DungNgo, Pudding, UltimateSasimi, MoodengNoodle, TangHuLu;
-        bool getBBQfood = false, getDragonFish = false, getGreenShrimp = false, getDumpling = false, getGrilledChicken = false, getIcecream_food = false, getMukrata = false
-            , getmeatball_food = false, getPizza = false, getSasimi = false, getStone = false, getTempura = false, getThaiCrab = false, getBingsu = false, getPumkimCheses = false, getCrunchPork = false, getSalad = false, getJellyfish_Salad = false, getGlamStew, getSweetSteak = false, getDungNgo = false, getPudding = false, getUltimateSasimi = false, getMoodengNoodle = false, getTangHuLu = false, getgetThaiCrab;
+        public static bool getBBQfood = false, getDragonFish = false, getGreenShrimp = false, getDumpling = false, getGrilledChicken = false, getIcecream_food = false, getMukrata = false
+            , getmeatball_food = false, getPizza = false, getSasimi = false, getStone = false, getTempura = false, getThaiCrab = false, getBingsu = false, getPumkimCheses = false,
+            getCrunchPork = false, getSalad = false, getJellyfish_Salad = false, getGlamStew, getSweetSteak = false, getDungNgo = false, getPudding = false, getUltimateSasimi = false, 
+            getMoodengNoodle = false, getTangHuLu = false, getgetThaiCrab;
         Texture2D coriander, grass, greendimon, hippowing, jeelyfishmeat, lemon, meatball;
         Texture2D Mendrek, noodle, pinkdimon, seafood, shumai, smileeggs;
         Texture2D stone, suki, tempura, purpledimon;
@@ -61,7 +63,9 @@ namespace LETHIMCOOK3.Screen
         bool Uniricefood, PumkinChesesfood, bingsuFood, sasimifood, JellyFishSaladfood, SweetSteakfood;
         bool octfood = false, BBQfoodfood = false, DragonFishfood = false, GreenShrimpfood = false, Dumplingfood = false,
             GrilledChickenfood = false, Icecream_foodfood = false, Mukratafood = false,
-                meatball_foodfood = false, Pizzafood = false, Sasimifood = false, Stonefood = false, Tempurafood = false, ThaiCrabfood = false, Bingsufood = false, PumkimChesesfood = false, CrunchPorkfood = false, Saladfood = false, Jellyfish_Saladfood = false, GlamStewfood = false, SweetSeakfood = false, DungNgofood = false, Puddingfood, UltimateSasimifood = false, MoodengNoodlefood = false, TangHuLufood = false;
+                meatball_foodfood = false, Pizzafood = false, Sasimifood = false, Stonefood = false, Tempurafood = false, ThaiCrabfood = false, Bingsufood = false, 
+            PumkimChesesfood = false, CrunchPorkfood = false, Saladfood = false, Jellyfish_Saladfood = false, GlamStewfood = false, SweetSeakfood = false, DungNgofood = false, Puddingfood, UltimateSasimifood = false, MoodengNoodlefood = false, 
+            TangHuLufood = false;
         Texture2D Boardquest_1, Boardquest_2, Boardquest_3, Boardquest_4, Boardquest_5, Boardquest_6, Boardquest_7, Boardquest_8, Boardquest_9
            , Boardquest_10, Boardquest_11, Boardquest_12, Boardquest_13, Boardquest_14, Boardquest_15, Boardquest_16, Boardquest_17, Boardquest_18,
            Boardquest_19, Boardquest_20, Boardquest_21, Boardquest_22, Boardquest_23, Boardquest_24, Boardquest_25, Boardquest_26, Boardquest_27;
@@ -206,45 +210,41 @@ namespace LETHIMCOOK3.Screen
             Quest_26 = game.Content.Load<Texture2D>("Menu_Quest/Quest_26");
             Quest_27 = game.Content.Load<Texture2D>("Menu_Quest/Quest_27");
      
-
-            QuestList.Add(new OpenQuest(octfood, Boardquest_1, BoardquestB_1,Quest_1, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Icecream_foodfood, Boardquest_2, Quest_2, BoardquestB_2, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Uniricefood, Boardquest_3, BoardquestB_3, Quest_3, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Tempurafood, Boardquest_4, BoardquestB_4, Quest_4, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(GreenShrimpfood, Boardquest_5, BoardquestB_5, Quest_5, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(ThaiCrabfood, Boardquest_6, BoardquestB_6, Quest_6, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Dumplingfood, Boardquest_7, BoardquestB_7, Quest_7, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(BBQfoodfood, Boardquest_8, BoardquestB_8, Quest_8, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(PumkinChesesfood, Boardquest_9, BoardquestB_9, Quest_9, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(CrunchPorkfood, Boardquest_10, BoardquestB_10, Quest_10, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(octfood = false, Boardquest_1, BoardquestB_1,Quest_1, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Icecream_foodfood = false, Boardquest_2, BoardquestB_2, Quest_2, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Uniricefood = false, Boardquest_3, BoardquestB_3, Quest_3, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Tempurafood = false, Boardquest_4, BoardquestB_4, Quest_4, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(GreenShrimpfood = false, Boardquest_5, BoardquestB_5, Quest_5, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(ThaiCrabfood = false, Boardquest_6, BoardquestB_6, Quest_6, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Dumplingfood = false, Boardquest_7, BoardquestB_7, Quest_7, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(BBQfoodfood = false, Boardquest_8, BoardquestB_8, Quest_8, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(PumkinChesesfood = false, Boardquest_9, BoardquestB_9, Quest_9, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(CrunchPorkfood = false, Boardquest_10, BoardquestB_10, Quest_10, new Rectangle(0, 0, 145, 180), false));
             //**11
-            QuestList.Add(new OpenQuest(GrilledChickenfood, Boardquest_11, BoardquestB_11, Quest_11, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(bingsuFood, Boardquest_12, BoardquestB_12, Quest_12, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(TangHuLufood, Boardquest_13, BoardquestB_13, Quest_13, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(DragonFishfood, Boardquest_14, BoardquestB_14, Quest_14, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(sasimifood, Boardquest_15, BoardquestB_15, Quest_15, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Pizzafood, Boardquest_16, BoardquestB_16, Quest_16, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Saladfood, Boardquest_17, BoardquestB_17, Quest_17, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Stonefood, Boardquest_18, BoardquestB_18, Quest_18, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(meatball_foodfood, Boardquest_19, BoardquestB_19, Quest_19, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(JellyFishSaladfood, Boardquest_20, BoardquestB_20, Quest_20, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(GrilledChickenfood = false, Boardquest_11, BoardquestB_11, Quest_11, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(bingsuFood = false, Boardquest_12, BoardquestB_12, Quest_12, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(TangHuLufood = false, Boardquest_13, BoardquestB_13, Quest_13, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(DragonFishfood = false, Boardquest_14, BoardquestB_14, Quest_14, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(sasimifood = false, Boardquest_15, BoardquestB_15, Quest_15, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Pizzafood = false, Boardquest_16, BoardquestB_16, Quest_16, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Saladfood = false, Boardquest_17, BoardquestB_17, Quest_17, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Stonefood = false, Boardquest_18, BoardquestB_18, Quest_18, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(meatball_foodfood = false, Boardquest_19, BoardquestB_19, Quest_19, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(JellyFishSaladfood = false, Boardquest_20, BoardquestB_20, Quest_20, new Rectangle(0, 0, 145, 180), false));
             ///**21
-            QuestList.Add(new OpenQuest(SweetSteakfood, Boardquest_21, BoardquestB_21, Quest_21, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(bingsuFood, Boardquest_22, BoardquestB_22, Quest_22, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(TangHuLufood, Boardquest_23, BoardquestB_23, Quest_23, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(Mukratafood, Boardquest_24, BoardquestB_24, Quest_24, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(sasimifood, Boardquest_25, BoardquestB_25, Quest_25, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(GlamStewfood, Boardquest_26, BoardquestB_26, Quest_26, new Rectangle(0, 0, 145, 180), false));
-            QuestList.Add(new OpenQuest(MoodengNoodlefood, Boardquest_27, BoardquestB_27, Quest_27, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(SweetSteakfood = false, Boardquest_21, BoardquestB_21, Quest_21, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(bingsuFood = false, Boardquest_22, BoardquestB_22, Quest_22, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(TangHuLufood = false, Boardquest_23, BoardquestB_23, Quest_23, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(Mukratafood = false, Boardquest_24, BoardquestB_24, Quest_24, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(sasimifood = false, Boardquest_25, BoardquestB_25, Quest_25, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(GlamStewfood = false, Boardquest_26, BoardquestB_26, Quest_26, new Rectangle(0, 0, 145, 180), false));
+            QuestList.Add(new OpenQuest(MoodengNoodlefood = false, Boardquest_27, BoardquestB_27, Quest_27, new Rectangle(0, 0, 145, 180), false));
 
             _craftRec.Add(new Vector2(287, 95));
             _craftRec.Add(new Vector2(287 + 69, 95));
             _craftRec.Add(new Vector2(287 + 69 + 69, 95));
             _craftRec.Add(new Vector2(287 + 69 + 69 +69, 95));
 
-
-
-            
             ///*****
             Game1.ingredentList.Add(new Food(0, "ayinomoto", false));
             Game1.ingredentList.Add(new Food(1, "chili", false));
@@ -323,7 +323,7 @@ namespace LETHIMCOOK3.Screen
                 Vector2 position = new Vector2(obj.Position.X, obj.Position.Y);
                 _entities.Add(new PlatformEntity(game, new RectangleF(position, obj.Size)));
             }
-
+           // Game1.MenuList.Add(new Food(Pudding, new Vector2(100, 100)));
             _entities.Add(player);
 
             foreach (IEntity entity in _entities)
@@ -342,11 +342,13 @@ namespace LETHIMCOOK3.Screen
         static Random randomQuest = new Random();
         float rotationMenuBG;
         ///**bool food
-        bool getPongneng = false;
+        public static bool getPongneng = false;
         bool onRandom = true;
         bool onQuest = false;
         bool alreadyDraw = false;
         bool inSide;
+        
+       
         public override void Update(GameTime theTime)
         {
             if (player.Bounds.Intersects(doorRec) && !GameplayScreen.EnterDoor)
@@ -455,11 +457,13 @@ namespace LETHIMCOOK3.Screen
 
                 inventoryBox = new Rectangle((int)Game1.BagList[i].foodPosition.X, (int)Game1.BagList[i].foodPosition.Y, 32, 32);
             }
+            //for (int i = 0; i < RestauarntScreen.QuestList.Count; i++)
+            //{
+            //    RestauarntScreen.QuestList[i].Menuname = false;
+            //}
 
-
-            if (ms.LeftButton == ButtonState.Pressed && mouseRec.Intersects(craftBox))
+            if (ms.LeftButton == ButtonState.Released && msPre.LeftButton == ButtonState.Pressed && mouseRec.Intersects(craftBox))
             {
-               
                 for (int i = 0; i < Game1.ingredentList.Count; i++)
                 {
                     Game1.ingredentList[i].istrue = false;
@@ -475,13 +479,19 @@ namespace LETHIMCOOK3.Screen
                             if (QuestList[0].Menuname && Game1.ingredentList[7].istrue == true && Game1.ingredentList[25].istrue == true)
                             {
                                 Game1.MenuList.Add(new Food(oct, new Vector2(100, 100)));
+                                
                                 Console.WriteLine("pongneng true");
                                 getPongneng = true;
                                 RemoveCraft(2);
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
-                               
+                                QuestList[0].iscomplet = true;
+                                if (isDing == false)
+                                {
+                                    Game1.soundEffects[6].Play();
+                                    isDing = true;
+                                }
                             }
                             if (QuestList[1].Menuname && Game1.ingredentList[36].istrue == true && Game1.ingredentList[14].istrue == true)
                             {
@@ -491,6 +501,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[1].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -506,6 +517,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[3].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -521,6 +533,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[4].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -536,6 +549,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[6].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -551,6 +565,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[7].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -566,6 +581,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[10].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -580,6 +596,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[11].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -595,6 +612,7 @@ namespace LETHIMCOOK3.Screen
                                 Game1.GotMenu = true;
                                 finsihcraft = true;
                                 Game1.havQ = false;
+                                QuestList[12].iscomplet = true;
                                 if (isDing == false)
                                 {
                                     Game1.soundEffects[6].Play();
@@ -745,7 +763,7 @@ namespace LETHIMCOOK3.Screen
                                 RemoveCraft(5);
                                 
                             }
-                            if (QuestList[16].Menuname && Game1.ingredentList[44].istrue == true && Game1.ingredentList[47].istrue == true && Game1.ingredentList[48].istrue == true && Game1.ingredentList[2].istrue == true)
+                            if (QuestList[16].Menuname && Game1.ingredentList[44].istrue == true && Game1.ingredentList[46].istrue == true && Game1.ingredentList[48].istrue == true && Game1.ingredentList[2].istrue == true)
                             {
                                 Game1.MenuList.Add(new Food(Salad, new Vector2(100, 100)));
                                 Console.WriteLine("getSalad");
@@ -760,7 +778,7 @@ namespace LETHIMCOOK3.Screen
                                 }
                                 RemoveCraft(5);
                             }
-                            if (QuestList[17].Menuname && Game1.ingredentList[32].istrue == true && Game1.ingredentList[43].istrue == true && Game1.ingredentList[1].istrue == true && Game1.ingredentList[0].istrue == true)
+                            if (QuestList[17].Menuname && Game1.ingredentList[32].istrue == true && Game1.ingredentList[42].istrue == true && Game1.ingredentList[1].istrue == true && Game1.ingredentList[0].istrue == true)
                             {
                                 Console.WriteLine("getStone");
                                 getStone = true;
@@ -888,12 +906,24 @@ namespace LETHIMCOOK3.Screen
                             }
 
                         }
+                
                     }
 
                 }
             }
             else isDing = false;
- 
+            if (Keyboard.GetState().IsKeyDown(Keys.P) )
+            {
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100))); 
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+                Game1.MenuList.Add(new Food(MoodengNoodle, new Vector2(100, 100)));
+            }
             if (rotationMenuBG < 360)
             {
                 rotationMenuBG += 0.10f;
@@ -902,13 +932,143 @@ namespace LETHIMCOOK3.Screen
             {
                 rotationMenuBG = 0;
             }
-            if (Game1.sendingMenu == true)
+
+            if (getPongneng == true)
             {
-                for(int i = 0; i < QuestList.Count; i++)
-                {
-                    QuestList[i].Menuname = false;
-                }
+                QuestList[0].Menuname = false;
+                QuestList[0].iscomplet = true;
             }
+            if (getIcecream_food == true)
+            {
+                QuestList[1].Menuname = false;
+                QuestList[1].iscomplet = true;
+            }
+            if (getUni == true)
+            {
+                QuestList[2].Menuname = false;
+                QuestList[2].iscomplet = true;
+            }
+            if (getTempura == true)
+            {
+                QuestList[3].Menuname = false;
+                QuestList[3].iscomplet = true;
+            }
+            if (getGreenShrimp == true)
+            {
+                QuestList[4].Menuname = false;
+                QuestList[4].iscomplet = true;
+            }
+            if (getThaiCrab == true)
+            {
+                QuestList[5].Menuname = false;
+                QuestList[5].iscomplet = true;
+            }
+            if (getDumpling == true)
+            {
+                QuestList[6].Menuname = false;
+                QuestList[6].iscomplet = true;
+            }
+            if (getBBQfood == true)
+            {
+                QuestList[7].Menuname = false;
+                QuestList[7].iscomplet = true;
+            }
+            if (getPumkimCheses == true)
+            {
+                QuestList[8].Menuname = false;
+                QuestList[8].iscomplet = true;
+            }
+            if (getCrunchPork == true)
+            {
+                QuestList[9].Menuname = false;
+                QuestList[9].iscomplet = true;
+            }
+            if (getGrilledChicken == true)
+            {
+                QuestList[10].Menuname = false;
+                QuestList[10].iscomplet = true;
+            }
+            if (getBingsu == true)
+            {
+                QuestList[11].Menuname = false;
+                QuestList[11].iscomplet = true;
+            }
+            if (getTangHuLu == true)
+            {
+                QuestList[12].Menuname = false;
+                QuestList[12].iscomplet = true;
+            }
+            if (getDragonFish == true)
+            {
+                QuestList[13].Menuname = false;
+                QuestList[13].iscomplet = true;
+            }
+            if (getSasimi == true)
+            {
+                QuestList[14].Menuname = false;
+                QuestList[14].iscomplet = true;
+            }
+            if (getPizza == true)
+            {
+                QuestList[15].Menuname = false;
+                QuestList[15].iscomplet = true;
+            }
+            if (getSalad == true)
+            {
+                QuestList[16].Menuname = false;
+                QuestList[16].iscomplet = true;
+            }
+            if (getStone == true)
+            {
+                QuestList[17].Menuname = false;
+                QuestList[17].iscomplet = true;
+            }
+            if (getmeatball_food == true)
+            {
+                QuestList[18].Menuname = false;
+                QuestList[18].iscomplet = true;
+            }
+            if (getJellyfish_Salad == true)
+            {
+                QuestList[19].Menuname = false;
+                QuestList[19].iscomplet = true;
+            }
+            if (getSweetSteak == true)
+            {
+                QuestList[20].Menuname = false;
+                QuestList[20].iscomplet = true;
+            }
+            if (getGlamStew == true)
+            {
+                QuestList[21].Menuname = false;
+                QuestList[21].iscomplet = true;
+            }
+            if (getDungNgo == true)
+            {
+                QuestList[22].Menuname = false;
+                QuestList[22].iscomplet = true;
+            }
+            if (getMukrata == true)
+            {
+                QuestList[23].Menuname = false;
+                QuestList[23].iscomplet = true;
+            }
+            if (getPudding == true)
+            {
+                QuestList[24].Menuname = false;
+                QuestList[24].iscomplet = true;
+            }
+            if (getUltimateSasimi == true)
+            {
+                QuestList[25].Menuname = false;
+                QuestList[25].iscomplet = true;
+            }
+            if (getMoodengNoodle == true)
+            {
+                QuestList[26].Menuname = false;
+                QuestList[26].iscomplet = true;
+            }
+
 
             foreach (IEntity entity in _entities)
             {
@@ -923,7 +1083,7 @@ namespace LETHIMCOOK3.Screen
 
         public int _count;
 
-        bool getUni = false;
+        public static bool getUni = false;
         int MenuPopup;
         bool IsFrigeInterect = false;
         bool sendingMenu = false;
@@ -1272,15 +1432,7 @@ namespace LETHIMCOOK3.Screen
         int count;
         public void RemoveCraft(int amount)
         {
-            count++;
-            if (count > 100)
-            {
-                for (int i = 0; i < amount; i--)
-                {
-                    Game1.CraftList.RemoveAt(i);
-                    break;
-                }
-            }
+       Game1.CraftList.Clear();
 
         }
 

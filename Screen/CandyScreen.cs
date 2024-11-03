@@ -22,6 +22,7 @@ namespace LETHIMCOOK3.Screen
     public class CandyScreen : screen
     {
         public List<Enemy> enemyList = new();
+        public static List<Food> foodList = new();
         Texture2D popup;
         Texture2D texture;
         AnimatedTexture SpriteTexture;
@@ -37,11 +38,29 @@ namespace LETHIMCOOK3.Screen
         RectangleF Bounds = new RectangleF(new Vector2(1500, 400), new Vector2(40, 60)); //new Vector2(1500, 400)
         public Texture2D book;
         Texture2D ui;
-        public Texture2D uiHeart, pinkslime, smileeggs, pork, sheepmeat, sheep, wipcream;
+        public Texture2D uiHeart, pinkslime, smileeggs, pork, sheepmeat, sheep, wipcream, IceCreamC, IceCream, icecream, pinksmilemeat;
 
         //Tile_FrontRestaurant Tile_Wall_Frontres
         public CandyScreen(Game1 game, EventHandler theScreenEvent) : base(theScreenEvent)
         {
+            IceCreamC = game.Content.Load<Texture2D>("tree/Collect/IceCream-export");
+            IceCream = game.Content.Load<Texture2D>("tree/IceCream");
+            icecream = game.Content.Load<Texture2D>("ingre/icecream");
+            pinksmilemeat = game.Content.Load<Texture2D>("ingre/pinksmilemeat");
+
+            foodList.Add(new Food("pinksmaile", GameplayScreen.PinkIce, GameplayScreen.PinkIceC, pinksmilemeat, new Vector2(1160, 770), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("pinksmaile", GameplayScreen.PinkIce, GameplayScreen.PinkIceC, pinksmilemeat, new Vector2(1380, 720), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("pinksmaile", GameplayScreen.PinkIce, GameplayScreen.PinkIceC, pinksmilemeat, new Vector2(1210, 700), new RectangleF(145, 740, 32, 32), false));
+
+            foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1394, 130), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1290, 174), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1285, 105), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1393, 68), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1351, 50), new RectangleF(145, 740, 32, 32), false));
+            foodList.Add(new Food("icecream", IceCream, IceCreamC, icecream, new Vector2(1250, 68), new RectangleF(145, 740, 32, 32), false));
+
+
+
             pinkslime = game.Content.Load<Texture2D>("pinksmaile");
             smileeggs = game.Content.Load<Texture2D>("ingre/smileeggs");
             pork = game.Content.Load<Texture2D>("ingre/pork");
@@ -135,9 +154,9 @@ namespace LETHIMCOOK3.Screen
             {
                 player.Attack(enemyList[i]);
             }
-            for (int i = 48; i < Game1.foodList.Count; i++)
+            for (int i = 0; i < foodList.Count; i++)
             {
-                Game1.foodList[i].Update(theTime);
+                foodList[i].Update(theTime,player,this);
             }
             for (int i = 0; i < enemyList.Count; i++)
             {
@@ -184,6 +203,15 @@ namespace LETHIMCOOK3.Screen
                 }
                 isSpawn[20] = true;
             }
+            if (RestauarntScreen.QuestList[1].Menuname == true && isSpawn[1] == false)
+            {
+                int countEnemy = 1;
+                for (int i = 0; i < countEnemy; i++)
+                {
+                    enemyList.Add(new Enemy("sheep", sheep, new Food[2] { new Food("sheepmeat", sheepmeat, new Rectangle(0, 0, 32, 32), true), new Food("wipcream", wipcream, new Rectangle(0, 0, 32, 32), true) }, 5, new RectangleF(400, 300, 64, 64)));
+                }
+                isSpawn[1] = true;
+            }
             if (RestauarntScreen.QuestList[7].Menuname == true && isSpawn[7] == false)
             {
                 int countEnemy = 1;
@@ -211,12 +239,6 @@ namespace LETHIMCOOK3.Screen
             menu = true;
             spawn[show] = menu;
             Console.WriteLine(" " + menu);
-
-
-
-
-
-            // Console.WriteLine(menu + " " + enemyINum);
         }
 
         public override void Draw(SpriteBatch _spriteBatch)
@@ -226,11 +248,11 @@ namespace LETHIMCOOK3.Screen
             _tiledMapRenderer.Draw(transformMatrix);//******//
             _spriteBatch.End();
             _spriteBatch.Begin(transformMatrix: transformMatrix, samplerState: SamplerState.PointClamp);//******//
-            foreach (Food food in Game1.foodList)
+            foreach (Food food in foodList)
             {
-                for (int i = 49; i < Game1.foodList.Count; i++)
+                for (int i = 0; i < foodList.Count; i++)
                 {
-                    Game1.foodList[i].Draw(_spriteBatch);
+                    foodList[i].Draw(_spriteBatch);
                 }
             }
             foreach (Enemy enemy in enemyList)

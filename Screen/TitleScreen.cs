@@ -28,7 +28,7 @@ namespace LETHIMCOOK3.Screen
         bool oncursor2 = false;
         bool oncursor3 = false;
         bool oncursor4 = false;
-        bool noSound = false;
+        public bool noSound = false;
         bool noMusic = false;
         bool tutorailUi;
         MouseState msPre, ms;
@@ -76,6 +76,7 @@ namespace LETHIMCOOK3.Screen
                     if (mouseRec.Intersects(sound))
                     {
                         noSound = !noSound;
+
                     }
                 }
                 if (ms.LeftButton == ButtonState.Pressed && msPre.LeftButton == ButtonState.Released)
@@ -85,6 +86,14 @@ namespace LETHIMCOOK3.Screen
                         noMusic = !noMusic;
                     }
                 }
+            }
+            if (noSound || noMusic)
+            {
+                Game1.instance.Stop();
+            }
+            else
+            {
+                Game1.instance.Play();
             }
             if (ms.LeftButton == ButtonState.Pressed && msPre.LeftButton == ButtonState.Released)
             {
