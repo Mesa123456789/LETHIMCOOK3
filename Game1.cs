@@ -277,8 +277,8 @@ namespace LETHIMCOOK3
             CandyScreen = new CandyScreen(this, new EventHandler(GameplayScreenEvent));
             SeaScreen = new SeaScreen(this, new EventHandler(GameplayScreenEvent));
 
-            mCurrentScreen = TitleScreen;
-            currentHeart = CandyScreen.uiHeart.Width - 10;
+            mCurrentScreen = CandyScreen;
+            currentHeart = uiHeart.Width - 10;
         }
         public RectangleF bookRec;
         public RectangleF mouseRec;
@@ -651,13 +651,6 @@ namespace LETHIMCOOK3
                     soundEffects[2].Play();
                 }
             }
-            for (int i = 0; i < RestauarntScreen.QuestList.Count; i++)
-            {
-                if (RestauarntScreen.QuestList[i].Menuname == false && RestauarntScreen.QuestList[i].iscomplet == true)
-                {
-                    randomQ.Add(i);
-                }
-            }
             if (GameplayScreen.openQuest == true)
             {
                 count++;
@@ -742,22 +735,22 @@ namespace LETHIMCOOK3
                 for (int i = 0; i < RestauarntScreen.QuestList.Count; i++)
                 {
 
-                        _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest].quest1, new Vector2(161 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
-                        if (cursorQuest)
-                        {
-                            _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest].quest2, new Vector2(161 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
-                        }
-                        _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest2].quest1, new Vector2(336 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
-                        if (cursorQuest2)
-                        {
-                            _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest2].quest2, new Vector2(336 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
-                        }
-                        _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest3].quest1, new Vector2(511 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
-                        if (cursorQuest3)
-                        {
-                            _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest3].quest2, new Vector2(511 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
-                        }
-                    
+                    _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest].quest1, new Vector2(161 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
+                    if (cursorQuest)
+                    {
+                        _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest].quest2, new Vector2(161 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
+                    }
+                    _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest2].quest1, new Vector2(336 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
+                    if (cursorQuest2)
+                    {
+                        _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest2].quest2, new Vector2(336 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
+                    }
+                    _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest3].quest1, new Vector2(511 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
+                    if (cursorQuest3)
+                    {
+                        _spriteBatch.Draw(RestauarntScreen.QuestList[GameplayScreen.getQuest3].quest2, new Vector2(511 - 9, 144), new Rectangle(0, 0, 145, 180), Color.White);
+                    }
+
                 }
                 if (closeXBox == false)
                 {

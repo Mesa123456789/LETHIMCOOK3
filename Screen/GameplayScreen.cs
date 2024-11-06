@@ -359,17 +359,16 @@ namespace LETHIMCOOK3.Screen
                             getQuest = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
                             getQuest2 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
                             getQuest3 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
-                            //Game1.randomQ.Add(0);
 
-                            if (getQuest == getQuest2 || getQuest == getQuest3 )
+                            if (getQuest == getQuest2 || getQuest == getQuest3/* || getQuest == Game1.randomQ[j] || getQuest2 == Game1.randomQ[j] || getQuest3 == Game1.randomQ[j]*/)
                             {
                                 getQuest = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
                             }
-                            if (getQuest2 == getQuest3 || getQuest2 == getQuest )
+                            if (getQuest2 == getQuest3 || getQuest2 == getQuest /*|| getQuest2 == Game1.randomQ[j] || getQuest == Game1.randomQ[j] || getQuest3 == Game1.randomQ[j]*/)
                             {
                                 getQuest2 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
                             }
-                            if (getQuest3 == getQuest2 || getQuest == getQuest3)
+                            if (getQuest3 == getQuest2 || getQuest == getQuest3 /*|| getQuest3 == Game1.randomQ[j] || getQuest == Game1.randomQ[j] || getQuest2 == Game1.randomQ[j]*/)
                             {
                                 getQuest3 = randomQuest.Next(0, RestauarntScreen.QuestList.Count);
                             }
@@ -386,7 +385,14 @@ namespace LETHIMCOOK3.Screen
                     onRandom = true;
                 }
             } else paper = false;
-
+            Game1.randomQ.Add(0);
+            for (int i = 0; i < RestauarntScreen.QuestList.Count; i++)
+            {
+                if (RestauarntScreen.QuestList[i].iscomplet == true)
+                {
+                    Game1.randomQ.Add(i);
+                }
+            }
             for (int i = Game1.enemyList.Count - 1; i >= 0; i--)
             {
                 player.Attack(Game1.enemyList[i]);

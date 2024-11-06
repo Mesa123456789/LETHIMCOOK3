@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input;
 using LETHIMCOOK3.Sprite;
 using MonoGame.Extended.Collections;
-using System.Reflection.Metadata;
+
 
 
 
@@ -38,7 +38,7 @@ namespace LETHIMCOOK3.Screen
         RectangleF Bounds = new RectangleF(new Vector2(1500, 400), new Vector2(40, 60)); //new Vector2(1500, 400)
         public Texture2D book;
         Texture2D ui;
-        public Texture2D uiHeart, pinkslime, smileeggs, pork, sheepmeat, sheep, wipcream, IceCreamC, IceCream, icecream, pinksmilemeat;
+        public Texture2D uiHeart, pinkslime, smileeggs, pork, sheepmeat, sheep, wipcream, IceCreamC, IceCream, icecream, pinksmilemeat, water;
 
         //Tile_FrontRestaurant Tile_Wall_Frontres
         public CandyScreen(Game1 game, EventHandler theScreenEvent) : base(theScreenEvent)
@@ -47,6 +47,8 @@ namespace LETHIMCOOK3.Screen
             IceCream = game.Content.Load<Texture2D>("tree/IceCream");
             icecream = game.Content.Load<Texture2D>("ingre/icecream");
             pinksmilemeat = game.Content.Load<Texture2D>("ingre/pinksmilemeat");
+            water = game.Content.Load<Texture2D>("candy_animate (1)");
+
 
             foodList.Add(new Food("pinksmaile", GameplayScreen.PinkIce, GameplayScreen.PinkIceC, pinksmilemeat, new Vector2(1160, 770), new RectangleF(145, 740, 32, 32), false));
             foodList.Add(new Food("pinksmaile", GameplayScreen.PinkIce, GameplayScreen.PinkIceC, pinksmilemeat, new Vector2(1380, 720), new RectangleF(145, 740, 32, 32), false));
@@ -166,6 +168,7 @@ namespace LETHIMCOOK3.Screen
             {
                 entity.Update(theTime);
             }
+            UpdateFream((float)theTime.ElapsedGameTime.TotalSeconds);
             _collisionComponent.Update(theTime);
             _tiledMapRenderer.Update(theTime);
             Game1._camera.LookAt(game._bgPosition + game._cameraPosition);//******//
@@ -263,12 +266,26 @@ namespace LETHIMCOOK3.Screen
                 }
             }
             player.Draw(_spriteBatch);
-    
+            _spriteBatch.Draw(water,new Vector2(225,513), new Rectangle(160 * frame, 0, 160,160), Color.White, 0.0f, Vector2.Zero, 2.0f,0, 0.0f);
+
 
 
             //_spriteBatch.Draw(popup, new Rectangle((int)doorRec.X, (int)doorRec.Y, (int)doorRec.Width, (int)doorRec.Height), Color.White);
 
 
+        }
+        int frame = 0;
+        int framePerSec = 7;
+        float totalElapsed; 
+        float timePerFream = (float)1 / 7;
+        public void UpdateFream(float elapsed)
+        {
+            totalElapsed += elapsed;
+            if (totalElapsed > timePerFream)
+            {
+                frame = (frame + 1) % 5;
+                totalElapsed -= timePerFream;
+            }
         }
 
 
